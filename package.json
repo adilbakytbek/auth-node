@@ -1,0 +1,42 @@
+{
+  "name": "nodejs-auth",
+  "version": "1.0.0",
+  "description": "Ready authorization on Nodejs nad Passport (JWT)",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adilbakytbek/auth-node.git"
+  },
+  "keywords": [
+    "Nodejs",
+    "PassportJs",
+    "Express",
+    "JWT",
+    "MongoDB"
+  ],
+  "author": "Adil Bakytbek <adilbakytbekk@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adilbakytbek/auth-node/issues"
+  },
+  "homepage": "https://github.com/adilbakytbek/auth-node#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "config": "^3.3.6",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-validator": "^6.12.1",
+    "mongodb": "^4.1.1",
+    "mongoose": "^6.0.4",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.12"
+  }
+}

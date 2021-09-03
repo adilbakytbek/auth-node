@@ -1,0 +1,4 @@
+{
+  "port": 8000,
+  "mongo_url": "mongodb+srv://crm-user:synx0098@invest.bqhgo.mongodb.net/AuthDataBase?retryWrites=true&w=majority"
+}

@@ -14,6 +14,6 @@ cd client npm install
 
 ## Для запуска
 
-    ```bash
+```bash
 npm run dev // Для запуска Dev режиме
 npm run start // Для запуска Prod режиме
