@@ -1,4 +1,16 @@
 {
-  "port": 8000,
-  "mongo_url": "mongodb+srv://crm-user:synx0098@invest.bqhgo.mongodb.net/AuthDataBase?retryWrites=true&w=majority"
+  "port": 3000,
+  "mongo_url": "mongodb+srv://crm-user:synx0098@invest.bqhgo.mongodb.net/AuthDataBase?retryWrites=true&w=majority",
+  "JWT_Secret_Key": "jwtKeySecret",
+  "SMTP-Mail": {
+    "host": "smtp.gmail.com",
+    "port": 587,
+    "secure": false,
+    "user": "megahoter@gmail.com",
+    "pass": "sadis0098"
+  },
+  "site_url": {
+    "apiUrl": "http://localhost:3000/api",
+    "clientUrl": "http://google.com"
+  }
 }

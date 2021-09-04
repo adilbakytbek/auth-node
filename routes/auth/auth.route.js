@@ -6,7 +6,7 @@ authRoute.post('/register', authController.register)
 authRoute.post('/login', authController.login)
 authRoute.post('/reset-password', authController.resetPassword)
 // Get
-authRoute.get('/refresh', authController.refresh)
+authRoute.get('/refresh', authController.refreshToken)
 authRoute.get('/activate/:link', authController.activateAccount)
 
 module.exports = authRoute
