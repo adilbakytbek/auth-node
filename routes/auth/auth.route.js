@@ -12,6 +12,6 @@ authRoute.post('/logout', authController.logout)
 authRoute.get('/refreshToken', authController.refreshToken)
 authRoute.get('/activate/:link', authController.activateAccount)
 
-authRoute.get('/getUsers', passport.authenticate('jwt', {session: false}), authController.getUser)
+authRoute.get('/getUsers', passport.authenticate('jwt', { session: false }), authController.getUser)
 
 module.exports = authRoute
