@@ -116,6 +116,10 @@ class AuthService {
         return await tokenService.removeToken(token)
     }
 
+    async getUser() {
+        return User.find({})
+    }
+
 }
 
 module.exports = new AuthService()

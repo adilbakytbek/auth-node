@@ -29,7 +29,7 @@ class AuthController {
     async refreshToken(req, res, next) {
         try {
             const {refreshToken} = req.cookies
-            const result =  await authService.refreshToken(refreshToken)
+            const result = await authService.refreshToken(refreshToken)
             res.cookie('refreshToken', result.refreshToken, {
                 maxAge: 30 * 24 * 60 * 60 * 1000,
                 httpOnly: true
@@ -62,10 +62,25 @@ class AuthController {
     }
 
     async logout(req, res, next) {
-        const {refreshToken} = req.cookies
-        await authService.logout(refreshToken)
-        res.clearCookie('refreshToken')
-        res.json({'message': 'Успех'})
+        try {
+            const {refreshToken} = req.cookies
+            await authService.logout(refreshToken)
+            res.clearCookie('refreshToken')
+            res.json({'message': 'Пользователь успешно удалён'})
+        } catch (e) {
+            next(e)
+        }
+
+    }
+
+    async getUser(req, res, next) {
+        try {
+            const users = await authService.getUser()
+            res.json(users)
+        } catch (e) {
+            next(e)
+        }
+
     }
 
 }
