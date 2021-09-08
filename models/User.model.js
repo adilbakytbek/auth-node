@@ -4,7 +4,7 @@ const UserSchema = new Schema({
     email: {type: String, unique: true, required: true},
     password: {type: String, required: true},
     isActive: {type: Boolean, default: false},
-    activatedLink: {type: String, unique: true},
+    activatedLink: {type: String},
     role: {type: String, ref: 'Roles', required: true}
 }, {timestamps: true})
 

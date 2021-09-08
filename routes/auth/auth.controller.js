@@ -16,7 +16,10 @@ class AuthController {
         try {
             const {email, password} = req.body
             const userData = await authService.validateUser(email, password)
-            res.cookie('refreshToken', userData.refreshToken)
+            res.cookie('refreshToken', userData.refreshToken, {
+                maxAge: 30 * 24 * 60 * 60 * 1000,
+                httpOnly: true
+            })
             return res.json(userData)
         } catch (e) {
             next(e)
@@ -25,7 +28,13 @@ class AuthController {
 
     async refreshToken(req, res, next) {
         try {
-            return res.send('Refresh')
+            const {refreshToken} = req.cookies
+            const result =  await authService.refreshToken(refreshToken)
+            res.cookie('refreshToken', result.refreshToken, {
+                maxAge: 30 * 24 * 60 * 60 * 1000,
+                httpOnly: true
+            })
+            res.json(result)
         } catch (e) {
             next(e)
         }
@@ -43,10 +52,20 @@ class AuthController {
 
     async resetPassword(req, res, next) {
         try {
-            return res.send('ResetPassword')
+            const {email} = req.body
+            await authService.resetPassword(email)
+            res.status(200)
+            res.json({message: 'Пароль успешно изменён'})
         } catch (e) {
             next(e)
         }
+    }
+
+    async logout(req, res, next) {
+        const {refreshToken} = req.cookies
+        await authService.logout(refreshToken)
+        res.clearCookie('refreshToken')
+        res.json({'message': 'Успех'})
     }
 
 }

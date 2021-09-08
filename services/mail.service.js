@@ -18,7 +18,7 @@ class MailService {
         await this.transport.sendMail({
             from: process.env.SMTP_LOGIN,
             to,
-            subject: 'Активация аккаунта ' + config.get('site_url.apiUrl'),
+            subject: 'Активация аккаунта ' + config.get('site_url.clientUrl'),
             text: '',
             html:
                 `
@@ -28,6 +28,26 @@ class MailService {
                  </div>  
                 `
         }, () => console.log('Mail sent'))
+    }
+
+    async sendResetMail(to, newPassword) {
+        await this.transport.sendMail({
+            from: process.env.SMTP_LOGIN,
+            to,
+            subject: `Новый пароль на сайте ${config.get('site_url.clientUrl')}`,
+            text: '',
+            html:
+                `
+                    <div>
+                        <h1>Ваши новые данные</h1>
+                        <p><b>Логин:</b> ${to}</p>
+                        <p><b>Пароль:</b> ${newPassword}</p>
+                       </div>
+                `
+        }, () => {
+            console.log('The link was sent successfully')
+        })
+
     }
 }
 

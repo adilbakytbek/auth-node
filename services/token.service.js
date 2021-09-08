@@ -22,8 +22,29 @@ class TokenService {
             userData.refreshToken = refreshToken
             return userData.save()
         }
-        await Refresh.create({userId, refreshToken})
+        return await Refresh.create({userId, refreshToken})
     }
+
+    async validateToken(token) {
+        try {
+            return jwt.verify(token, config.get('JWT_Secret_Key'))
+        } catch (e) {
+            return null
+        }
+    }
+
+    async findRefreshToken(refreshToken) {
+        try {
+            return await Refresh.findOne({refreshToken})
+        } catch (e) {
+            return null
+        }
+    }
+
+    async removeToken(refreshToken) {
+        return Refresh.deleteOne({refreshToken})
+    }
+
 }
 
 module.exports = new TokenService()
